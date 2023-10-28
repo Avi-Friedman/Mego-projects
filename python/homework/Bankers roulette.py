@@ -1,0 +1,16 @@
+import random
+list_name_1 = input("enter name:")
+list_name_2 = input("enter name:")
+list_name_3 = input("enter name:")
+list_name_4 = input("enter name:")
+list_name_5 = input("enter name:")
+list_name_6 = input("enter name:")
+list_name = []
+list_name.append(list_name_1)
+list_name.append(list_name_2)
+list_name.append(list_name_3)
+list_name.append(list_name_4)
+list_name.append(list_name_5)
+list_name.append(list_name_6)
+run_namber = random.randint(0, len(list_name)-1)
+print(f"the payer is: {list_name[run_namber]}")
