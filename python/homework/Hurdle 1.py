@@ -1,21 +1,21 @@
-def fanction_r():
+def function_r():
     for i in range(2):
         move()
         turn_left()
         turn_left()
         turn_left()
         
-def fanction_l():
+def function_l():
     move()
     turn_left()
     
-def fanction_game():
+def function_game():
     for i in range (6):
-        fanction_l()
-        fanction_r()
-        fanction_l()
+        function_l()
+        function_r()
+        function_l()
         
-fanction_game()
+function_game()
     
 
     
