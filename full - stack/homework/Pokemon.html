@@ -1,0 +1,168 @@
+<canvas id="myCanvas" width="400" height="400" style="border:1px solid;"></canvas>
+<br>
+<!--<p>X:</p>
+<p id="x_value">--</p>
+<p>Y:</p>
+<p id="y_value">--</p>-->
+<p>Your score is:</p>
+<p id="score_value">--</p>
+<p>Your life is:</p>
+<p id="life_value">--</p>
+
+<!--<p>applex:</p>
+<p id="applex_value">--</p>
+<p>appley:</p>
+<p id="appley_value">--</p>-->
+
+
+
+<script>
+
+    //----------------------------------------------------
+    function keyDownEventHandler() {
+
+        document.getElementById("life_value").innerHTML = life;
+
+        if (event.keyCode == 40)
+            direction = 'down';
+
+        if (event.keyCode == 38)
+            direction = 'up';
+
+        if (event.keyCode == 37)
+            direction = 'left';
+
+        if (event.keyCode == 39)
+            direction = 'right';
+    }
+    function TimeEventHandler() {
+        //clean
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, 400, 400);
+
+        if (direction == 'down')
+            y += 20
+
+        if (direction == 'up')
+            y -= 20
+        if (direction == 'left')
+            x -= 20
+
+        if (direction == 'right')
+            x += 20
+
+
+        if (y > 380)
+            direction = 'up';
+
+        if (y < 0)
+            direction = 'down';
+        if (x > 380)
+            direction = 'left';
+        if (x < 0)
+            direction = 'right';
+
+
+
+        //document.getElementById("x_value").innerHTML = x;
+        // document.getElementById("y_value").innerHTML = y;
+
+
+        if (x == applex && y == appley) {
+            score += 1;
+            document.getElementById("score_value").innerHTML = score;
+            rundomx = Math.floor(Math.random() * 380);
+            rundomy = Math.floor(Math.random() * 380);
+
+            applex = rundomx - rundomx % 20;
+            appley = rundomy - rundomy % 20;
+
+            rundomxs = Math.floor(Math.random() * 380);
+            rundomys = Math.floor(Math.random() * 380);
+
+            stonex = rundomxs - rundomxs % 20;
+            stoney = rundomys - rundomys % 20;
+
+            rundomxs2 = Math.floor(Math.random() * 380);
+            rundomys2 = Math.floor(Math.random() * 380);
+
+            stonex2 = rundomxs2 - rundomxs2 % 20;
+            stoney2 = rundomys2 - rundomys2 % 20;
+
+
+
+
+
+        }
+        if (x == stonex && y == stoney || x == stonex2 && y == stoney2) {
+            life -= 1;
+            if (life == 0)
+                life = "game over"
+
+            document.getElementById("life_value").innerHTML = life;
+
+
+
+
+
+
+        }
+
+
+
+
+        //draw rectangular 
+        ctx.fillStyle = "black";
+        ctx.fillRect(x, y, 20, 20);
+
+        ctx.fillStyle = "red";
+        ctx.fillRect(applex, appley, 20, 20);
+
+        ctx.fillStyle = "blue";
+        ctx.fillRect(stonex, stoney, 20, 20);
+
+        ctx.fillStyle = "blue";
+        ctx.fillRect(stonex2, stoney2, 20, 20);
+
+
+
+
+
+
+
+    }
+
+    //----------------------------------------------------
+
+    var rundomx = 0;
+    var rundomy = 0;
+    var rundomxs = 0;
+    var rundomys = 0;
+    var rundomxs2 = 0;
+    var rundomys2 = 0;
+
+    canvas = document.getElementById('myCanvas');
+    ctx = canvas.getContext('2d');
+    var x = 40;
+    var y = 40;
+    var applex = 100;
+    var appley = 20;
+    var stonex = 20;
+    var stoney = 80;
+    var stonex2 = 160;
+    var stoney2 = 180;
+    var direction = 'right'
+
+    var score = 0;
+    var life = 3;
+
+    document.onkeydown = keyDownEventHandler;
+    if (score < 5);
+    setInterval(TimeEventHandler, 100);
+    // if (score >= 5);
+    // setInterval(TimeEventHandler, 70);
+
+
+
+
+</script>
