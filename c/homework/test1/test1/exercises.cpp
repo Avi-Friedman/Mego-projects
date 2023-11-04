@@ -310,45 +310,90 @@ void main() {
 
 	// תרגיל מס 24 // פולינדרום 
 
+//
+//int num_1 =0, num_2 = 0, num_3 =0;
+//
+//printf("pleese ente a number: ");
+//scanf_s("%d", &num_1);
+//
+//num_3 = num_1;
+//
+//while (num_1 != 0) {
+//
+//	num_2 = num_2 * 10 + num_1 % 10;
+//
+//	num_1 = num_1 / 10;
+//}
+//if (num_2 == num_3)
+//printf("The number is polindrom!");
+//else
+//printf("The num ber is not polindrom!");
 
-int num_1 =0, num_2 = 0, num_3 =0;
 
-printf("pleese ente a number: ");
-scanf_s("%d", &num_1);
+// תרגיל מס 25// קליטת מספרים עד הופעת 3 פעמים 0 וסכימת ממוצע      
 
-num_3 = num_1;
 
-while (num_1 != 0) {
+//
+//int  num_z = 0, num_2 =0, sum = 0, num_n = 0, avarage =0;
+//
+//while (num_z < 3) {
+//
+//	printf("pleese enter a number:");
+//	scanf_s("%d", &num_2);
+//
+//	if (num_2 != 0) {
+//
+//		sum += num_2;
+//		num_n += 1;}
+//
+//	else{
+//
+//		num_z += 1;
+//	
+//	}
+//}
+//
+//avarage = (sum / num_n);
+//
+//printf("the avarage is: %d", avarage);	
 
-	num_2 = num_2 * 10 + num_1 % 10;
 
-	num_1 = num_1 / 10;
+	   // תרגיל מס 26 // קליטת ערך מספרי בן מס ספרות והוצאת ההפרש בין הספרה הגדולה ביותר לקטנה ביותר
+//
+//	int enter_num = 0, b_num = 0, l_num = 9, num_1 = 0, dif = 0;
+//
+//	printf("please enter a number: ");
+//	scanf_s("%d", &enter_num);
+//
+//	while (enter_num != 0) {
+//
+//		num_1 = enter_num % 10;
+//
+//		enter_num = enter_num / 10;
+//
+//		if (num_1 >= b_num) {
+//
+//			b_num = num_1;
+//			 
+//		}
+//		if (num_1 <= l_num) {
+//
+//			l_num = num_1;
+//		}
+//	}
+//
+//dif = b_num - l_num;
+//
+//printf("the difference is: %d", dif);
+
+
+// תרגרגיל מס 27 // 
+		
+
+
+
+
+
 }
-if (num_2 == num_3)
-printf("The number is polindrom!");
-else
-printf("The num ber is not polindrom!");
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

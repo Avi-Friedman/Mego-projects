@@ -28,13 +28,12 @@ while num_for_matches != num_for_chosen and attempts != 0:
 
                 break
             else:
-                num_for_matches = num_for_matches
-
+                matches = "no"
+                continue
         elif letters[i-1] == player:
             continue
 
     if matches == "yes":
-        matches = "no"
         continue
 
     elif matches == "no":
@@ -44,12 +43,12 @@ while num_for_matches != num_for_chosen and attempts != 0:
         print(f"You have {attempts} attempts left")
 
 if attempts == 0:
-    print("The chosen fruit is: " + the_chosen_fruit)
-    print("you are loser\n\n" + hangmen_grphics.gema_over)
+    print("\n\nThe chosen fruit is: " + the_chosen_fruit)
+    print("\n\nyou are loser\n\n" + hangmen_grphics.gema_over)
 
 elif num_for_matches == num_for_chosen:
     print(letters)
-    print("you did well\n\n" + hangmen_grphics.win)
+    print("\n\nyou did well\n\n" + hangmen_grphics.win)
 
 
 
