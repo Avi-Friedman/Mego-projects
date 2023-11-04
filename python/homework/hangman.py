@@ -1,4 +1,4 @@
-import hangmen_grphics
+import hangmen_graphics
 import random
 
 fruit_list = ["apple", "cherry", "pear", "watermelon", "peach", "plum", "orange", "banana", "pineapple"]
@@ -10,7 +10,7 @@ attempts = 7# מספר נסיונות שנשארו
 letters = ["_"] * num_for_chosen
 matches = "no"
 
-print(hangmen_grphics.welcome)
+print(hangmen_graphics.welcome)
 input("--You have to discover the hidden fruit--\n\npleas enter to start")
 
 while num_for_matches != num_for_chosen and attempts != 0:
@@ -37,18 +37,18 @@ while num_for_matches != num_for_chosen and attempts != 0:
         continue
 
     elif matches == "no":
-        print(hangmen_grphics.HANGMANPICS[num_for_list_graphics])
+        print(hangmen_graphics.HANGMANPICS[num_for_list_graphics])
         num_for_list_graphics += 1
         attempts -= 1
         print(f"You have {attempts} attempts left")
 
 if attempts == 0:
     print("\n\nThe chosen fruit is: " + the_chosen_fruit)
-    print("\n\nyou are loser\n\n" + hangmen_grphics.gema_over)
+    print("\n\nyou are loser\n\n" + hangmen_graphics.gema_over)
 
 elif num_for_matches == num_for_chosen:
     print(letters)
-    print("\n\nyou did well\n\n" + hangmen_grphics.win)
+    print("\n\nyou did well\n\n" + hangmen_graphics.win)
 
 
 
