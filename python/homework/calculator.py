@@ -10,6 +10,7 @@ def subtraction(a, b):
 def multiplication(a, b,):
     return a * b
 
+
 user_num_1 = int(input("pleas enter a first number: "))
 type_of_action = input("pleas enter what do you wont to do: addition(+), subtraction(-), multiplication(*), division(/): ").casefold()
 user_num_2 = int(input("pleas enter another number: "))
