@@ -47,14 +47,26 @@ short = 0
 re = True
 i = 0
 
-#A function to check if there are components in stock
-def resource_check(lat, res):
-    short = 0
-    my_list = ["water", "milk", "coffee"]
-    for i in range (3):
+# A function to check if there are components in stock
+# def resource_check(lat, res):
+#      short = 0
+#      my_list = ["water", "milk", "coffee"]
+#      for i in range (3):
+#
+#          component = my_list[i]
+#          if lat[component] > res[component]:
+#              short = 1
+#          else:
+#              continue
+#      if short == 1:
+#          return True
+#      else:
+#          return False
 
-        component = my_list[i]
-        if lat[component] > res[component]:
+def resource_check(res, lat):
+    short = 0
+    for i in res:
+        if res[i] < lat[i]:
             short = 1
         else:
             continue
@@ -62,6 +74,7 @@ def resource_check(lat, res):
         return True
     else:
         return False
+
 
 #A function to check if the money is enough for the selected product
 def Check_amount(us_m, cho):
@@ -72,16 +85,22 @@ def Check_amount(us_m, cho):
 
 def resource_check_cidrices(res, lat):
 
-    my_list = ["water", "milk", "coffee"]
-    for i in range (3):
+    for i in res:
 
-        component = my_list[i]
-        res[component] -= lat[component]
+        res[i] -= lat[i]
 
-        return res
+    return res
 
 
 
-
-
-
+# def func():
+#     #for i in range (3):
+#         for i in resources:
+#             if resources[i]> latte[i]:
+#                 print(i)
+#                 print("ok")
+#             else:
+#                 print("i'm sorry")
+#
+#
+# func()

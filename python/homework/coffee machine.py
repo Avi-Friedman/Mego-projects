@@ -45,7 +45,7 @@ while coffee_machine_function.re == True:
             pay = coffee_machine_function.value_coin[coin[0]]
             coffee_machine_function.Cash_register[coin[0]] += pay
             all_pay += pay
-            coffee_machine_function.Cash_register["all_money"] += all_pay
+            coffee_machine_function.Cash_register["all_money"] += pay
             all_pay = float("{:.2f}".format(all_pay))
         #Option to add when the amount is not enough
             add = input(f"The amount you put in is: {all_pay}.\n\nWant to add currency?(yes/no)").casefold()
