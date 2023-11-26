@@ -1,24 +1,46 @@
 <canvas id="myCanvas" width="400" height="400" style="border:1px solid;"></canvas>
 <br>
-<!--<p>X:</p>
-<p id="x_value">--</p>
-<p>Y:</p>
-<p id="y_value">--</p>-->
+
 <p>Your score is:</p>
 <p id="score_value">--</p>
 <p>Your life is:</p>
 <p id="life_value">--</p>
+<p>randomxs_2:</p>
+<p id="randomxs_2_value">--</p>
 
-<!--<p>applex:</p>
-<p id="applex_value">--</p>
-<p>appley:</p>
-<p id="appley_value">--</p>-->
+
 
 
 
 <script>
 
     //----------------------------------------------------
+    function TimeEventHandler_s() {
+
+
+
+        if (rundomxs_2 == 1)
+            stonex += 20
+        if (rundomxs_2 == 2)
+            stonex -= 20
+        if (rundomxs_2 == 3)
+            stoney += 20
+        if (rundomxs_2 == 0)
+            stoney -= 20
+
+
+        if (stoney > 380)
+            stoney = 0
+        if (stoney < 0)
+            stoney = 380
+        if (stonex > 380)
+            stonex = 0
+        if (stonex < 0)
+            stonex = 380
+
+
+    }
+
     function keyDownEventHandler() {
 
         document.getElementById("life_value").innerHTML = life;
@@ -35,6 +57,11 @@
         if (event.keyCode == 39)
             direction = 'right';
     }
+    function TimeEventHandler_s2() {
+        rundomxs_2 = Math.floor(Math.random(1) * 4);
+        document.getElementById("randomxs_2_value").innerHTML = rundomxs_2;
+    }
+
     function TimeEventHandler() {
         //clean
         ctx.fillStyle = 'white';
@@ -64,9 +91,6 @@
 
 
 
-        //document.getElementById("x_value").innerHTML = x;
-        // document.getElementById("y_value").innerHTML = y;
-
 
         if (x == applex && y == appley) {
             score += 1;
@@ -77,36 +101,24 @@
             applex = rundomx - rundomx % 20;
             appley = rundomy - rundomy % 20;
 
-            rundomxs = Math.floor(Math.random() * 380);
-            rundomys = Math.floor(Math.random() * 380);
-
-            stonex = rundomxs - rundomxs % 20;
-            stoney = rundomys - rundomys % 20;
-
-            rundomxs2 = Math.floor(Math.random() * 380);
-            rundomys2 = Math.floor(Math.random() * 380);
-
-            stonex2 = rundomxs2 - rundomxs2 % 20;
-            stoney2 = rundomys2 - rundomys2 % 20;
-
+            rundomxs = Math.floor(Math.random() * 380 - rundomxs % 20);
+            rundomys = Math.floor(Math.random() * 380 - rundomys % 20);
 
 
 
 
         }
-        if (x == stonex && y == stoney || x == stonex2 && y == stoney2) {
+        if (x == stonex && y == stoney ||x == stonex- 20 && direction == "left" && rundomx == 1 || x == stonex + 20 &&
+            direction == "righg" && 2||y == stoney- 20 && direction == "down" && rundomx == 0 || y == stoney + 20 &&
+            direction == "down" && 3 ) {
             life -= 1;
             if (life == 0)
                 life = "game over"
 
             document.getElementById("life_value").innerHTML = life;
 
-
-
-
-
-
         }
+
 
 
 
@@ -131,15 +143,26 @@
 
 
     }
+    function score() {
+
+        if (score <= 5 && score < 10) {
+            time = time + 50;
+            level = level + 1;
+            document = score;
+
+
+
+        }
+
+    }
 
     //----------------------------------------------------
-
+    var rundomxs_2 = 0
     var rundomx = 0;
     var rundomy = 0;
     var rundomxs = 0;
     var rundomys = 0;
-    var rundomxs2 = 0;
-    var rundomys2 = 0;
+
 
     canvas = document.getElementById('myCanvas');
     ctx = canvas.getContext('2d');
@@ -149,18 +172,27 @@
     var appley = 20;
     var stonex = 20;
     var stoney = 80;
-    var stonex2 = 160;
-    var stoney2 = 180;
-    var direction = 'right'
+    var level = 1;
+    var level_text = "שלב  ";
+    var direction = 'right';
 
     var score = 0;
     var life = 3;
-
+    var time = 350;
     document.onkeydown = keyDownEventHandler;
-    if (score < 5);
-    setInterval(TimeEventHandler, 100);
-    // if (score >= 5);
-    // setInterval(TimeEventHandler, 70);
+
+
+
+    setInterval(TimeEventHandler, time);
+    setInterval(TimeEventHandler_s, time + 50);
+    setInterval(TimeEventHandler_s2, 1700);
+    win_level = window.alert(level_text + level);
+    document.write(win_level);
+    document = score;
+
+
+
+
 
 
 

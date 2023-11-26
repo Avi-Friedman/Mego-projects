@@ -1,3 +1,4 @@
+
 import hangmen_graphics
 import random
 
