@@ -1,0 +1,75 @@
+    
+    db.Medication.insert(
+    
+    [
+        {
+        Name: "Acamol",
+        Class: "pain killer",
+        type: "sirop",
+        units: "250 ml",
+        price: 30
+        },
+        {
+        Name: "Optalgin",
+        Class: "pain killer",
+        type: "drops",
+        units: "20 ml",
+        price: 35
+        },
+        {
+        Name: "raphapen",
+        Class: "antibiotics",
+        type: "Tablets",
+        units: 20,
+        price: 22
+        },
+        {
+        Name: "fenistil",
+        Class: "anti elergan",
+        type: "ointment",
+        units: "150 ml",
+        price: 38
+        },
+        {
+        Name: "nurofen",
+        Class: "pain killer",
+        type: "candles",
+        units: 18,
+        price: 18.90
+        },
+   
+    ]
+
+)
+
+use Pharmacy
+1 - Pharmacy> db.Medication.find().count()
+2 - Pharmacy> db.Madication.find().limit(1)
+    Pharmacy> db.Medication.find().skip(db.Medication.find().count()-1)
+    Pharmacy> db.Madication.find().limit(2)
+    Pharmacy> db.Medication.find().skip(db.Medication.find().count()-2)
+3 - Pharmacy> db.Medication.find({Name:'fenistil'
+    })
+4 - Pharmacy> db.Medication.find({price: 38
+    })
+5 - Pharmacy> db.Medication.find().sort({price: -1
+    }).limit(1)
+    Pharmacy> db.Medication.find().sort({price: 1
+    }).limit(1)
+6 - Pharmacy> db.Medication.remove({price: 30
+    })
+7.1 - Pharmacy> db.Medication.update({Name:'Acamol'},{$set:{
+    Name:'aspirin', 
+    Class:'Anticoagulant', 
+    type:'Tablets', 
+    units:22, 
+    price:41.9
+    }})    
+7.2 - Pharmacy> db.Medication.update({Name:'aspirin'},{$set:{
+    Name: "Acamol",
+    Class: "pain killer",
+    type: "sirop",
+    units: "250 ml",
+    price: 30
+    }})
+8 - Pharmacy> db.Medication.update({Name:'Acamol'},{$set:{Name:'aspirin'}})

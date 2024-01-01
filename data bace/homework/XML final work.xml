@@ -1,0 +1,55 @@
+<!DOCTYPE Pharmacy [
+
+<!ELEMENT Pharmacy (Medication+)>
+<!ELEMENT Medication (name,class,type,units,price)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT class (#PCDATA)>
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT units (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+
+]>
+
+<Pharmacy>
+
+    <Medication>
+        <name>Acamol</name>
+        <class>pain killer</class>
+        <type>sirop</type>
+        <units>250 ml</units>
+        <price>30</price>
+    </Medication>
+
+    <Medication>
+        <name>Optalgin</name>
+        <class>pain killer</class>
+        <type>drops</type>
+        <units>20 ml</units>
+        <price>35</price>
+    </Medication>
+
+    <Medication>
+        <name>raphapen</name>
+        <class>antibiotics</class>
+        <type>Tablets</type>
+        <units>20</units>
+        <price>22</price>
+    </Medication>
+
+    <Medication>
+        <name>fenistil</name>
+        <class>anti elergan</class>
+        <type>ointment</type>
+        <units>150 ml</units>
+        <price>38</price>
+    </Medication>
+
+    <Medication>
+        <name>nurofen</name>
+        <class>candles</class>
+        <type>pain killer</type>
+        <units>18</units>
+        <price>18.90</price>
+    </Medication>
+
+</Pharmacy>

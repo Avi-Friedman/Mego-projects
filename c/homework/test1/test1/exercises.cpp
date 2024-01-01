@@ -1,5 +1,6 @@
 ﻿#include <stdio.h>
 #include <limits.h>
+#include <math.h>
 
 void main() {
 	//
@@ -387,13 +388,26 @@ void main() {
 //printf("the difference is: %d", dif);
 
 
-// תרגרגיל מס 27 // 
-		
+	//
+	// קליטת 10 מספים והדפסת שני המספרים הסמוכים עם ההפרש הקטן ביותר// תרגרגיל מס 27 // 
 
 
+	int i, user_num = 0, num_1 = 0, gap = 0, result = 0;
 
+	for (i = 1; i == 10; i += 1) {
 
+		printf("pleas enter a number: ");
+		scanf_s("%d", &user_num);
+		if (user_num > num_1)
+			gap = user_num - num_1;
+		else
+			gap = num_1 - user_num;
+		if (gap < result)
+			result = gap;
+		num_1 = user_num;
+		printf("the low gap number is: %d", result);
+	}
+	}
 
-}
 
 

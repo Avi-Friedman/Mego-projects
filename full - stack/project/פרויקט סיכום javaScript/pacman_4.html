@@ -1,0 +1,364 @@
+<div style="display: flex; align-items: center; justify-content: center;">
+  
+<canvas id="myCanvas" width="400" align-items="center" height="400" style="border:1px solid;"></canvas>
+</div>
+<br>
+<p>Your score is:</p>
+<p id="score_value">--</p>
+<p>Your life is:</p>
+<p id="life_value">--</p>
+<p>Level:</p>
+<p id="level_value">--</p>
+
+
+<script>0
+    var dir = 0;
+    var map_x = 0;
+    var map_y = 0;
+    var apples = new Array();
+    var bombs = new Array();
+    var enemy = new Array();
+    var wall = new Array();
+    var map = new Array
+        (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 4, 0, 1,
+            1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1,
+            1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
+            1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
+            1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 2, 0, 1, 1, 1, 0, 0, 2, 0, 0, 1, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1,
+            1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 2, 0, 0, 1, 0, 0, 0, 1,
+            1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1,
+            1, 0, 1, 0, 1, 1, 0, 0, 0, 2, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1,
+            1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+
+    for (i = 0; i < map.length; i++) {
+            map_x = (i % 20) * 20;
+            map_y = (Math.floor(i / 20)) * 20;
+            if (map[i] == 1) {
+                wall.push({ x: map_x, y: map_y });
+            }
+            if (map[i] == 2) {
+                apples.push({ x: map_x, y: map_y });
+            }
+            if (map[i] == 3) {
+                bombs.push({ x: map_x, y: map_y });
+            }
+            if (map[i] == 4) {
+                enemy.push({ x: map_x, y: map_y });
+            }
+        }
+
+    var num_for_random = 1;
+
+    var direction = 'stop';
+    var x = 200;
+    var y = 200;
+    var rundom_for_enemy = 0;
+    var random_x = 0;
+    var random_y = 0;
+    var a = 1;
+    var random_2 = 0;
+
+    var j = 0;
+
+    var apple_image = new Image();
+    var player_image = new Image();
+    var bomb_image = new Image();
+    var bomb_image_2 = new Image();
+    var wall_image = new Image();
+    var enemy_image = new Image();
+    var ham_image = new Image();
+    var zero_image = new Image();
+
+    var new_brick_x = 0;
+    var new_brick_y = 0;
+
+    var score = 0;
+    var life = 3;
+    var level = 1;
+    var levelText = "שלב ";
+    var time = 350;
+
+    var dir_enemy = "stop"
+
+    var right = 0;
+    var left = 0;
+    var down = 0;
+    var up = 0;
+
+    var i = 0;
+
+    // A function to output a random position of X and Y
+    function random_num(num_x, num_y) {
+        num_x = Math.floor(Math.random() * 380);
+        num_x = num_x - num_x % 20;
+        num_y = Math.floor(Math.random() * 380);
+        num_y = num_y - num_y % 20;
+        return [num_x, num_y];
+    }
+    function aa() {
+        num_for_random += 1;
+        return num_for_random;
+    }
+
+    function enemys() {
+
+
+        for ( j = 0; j < enemy.length; j++) {
+            if (num_for_random != 0)
+                rundom_for_enemy = Math.floor(Math.random(1) * 4);
+
+
+            if (rundom_for_enemy == 1)
+                dir_enemy = "right";
+            if (rundom_for_enemy == 2)
+                dir_enemy = "left";
+            if (rundom_for_enemy == 3)
+                dir_enemy = "down";
+            if (rundom_for_enemy == 0)
+                dir_enemy = "up";
+
+            // for (j = 0; j < enemy.length; j++) {
+            for (i = 0; i < wall.length; i++) {
+                for (k = 0; k < apples.length; k++) {
+                    for (v = 0; v < bombs.length; v++) {
+
+                        if (enemy[j].x == wall[i].x - 20 && dir_enemy == "right" && enemy[j].y == wall[i].y || 
+                            enemy[j].x == apples[k].x - 20 && dir_enemy == "right" && enemy[j].y == apples[k].y ||
+                            enemy[j].x == bombs[v].x - 20 && dir_enemy == "right" && enemy[j].y == bombs[v].y)
+                            dir_enemy = "left";
+                        if (enemy[j].x == wall[i].x + 20 && dir_enemy == "left" && enemy[j].y == wall[i].y ||
+                            enemy[j].x == apples[k].x + 20 && dir_enemy == "left" && enemy[j].y == apples[k].y ||
+                            enemy[j].x == bombs[v].x + 20 && dir_enemy == "left" && enemy[j].y == bombs[v].y)
+                            dir_enemy = "right";
+                        if (enemy[j].y == wall[i].y - 20 && dir_enemy == "down" && enemy[j].x == wall[i].x ||
+                            enemy[j].y == apples[k].y - 20 && dir_enemy == "down" && enemy[j].x == apples[k].x ||
+                            enemy[j].y == bombs[v].y - 20 && dir_enemy == "down" && enemy[j].x == bombs[v].x)
+                            dir_enemy = "up";
+                        if (enemy[j].y == wall[i].y + 20 && dir_enemy == "up" && enemy[j].x == wall[i].x ||
+                            enemy[j].y == apples[k].y + 20 && dir_enemy == "up" && enemy[j].x == apples[k].x ||
+                            enemy[j].y == bombs[v].y + 20 && dir_enemy == "up" && enemy[j].x == bombs[v].x)
+                            dir_enemy = "down";
+                    }
+                }
+            }
+            if (dir_enemy == "right")
+                enemy[j].x += 20;
+            if (dir_enemy == "left")
+                enemy[j].x -= 20;
+            if (dir_enemy == "down")
+                enemy[j].y += 20;
+            if (dir_enemy == "up")
+                enemy[j].y -= 20;
+        }
+        num_for_random = 0;
+    }
+    function TimeEventHandler() {
+        // clear canvas
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, 400, 400);
+
+        //url for images
+        apple_image.src = "הורדה.jpeg";
+        player_image.src = "צילום מסך 2023-12-24 151039.png";
+        bomb_image.src = "צילום מסך 2023-12-24 152822.png";
+        bomb_image_2.src = "צילום מסך 2023-12-24 152839.png";
+        wall_image.src = "צילום מך 2023-12-24 151039.png";
+        enemy_image.src = "צילום מסך 2023-12-27 162617.png";
+        ham_image.src = "צילום מסך 2023-12-28 201540.png";
+        zero_image.src = "";
+
+        // Change of direction within the boundaries of the field
+        // // stop wen the crassh with wall
+        for (i = 0; i < wall.length; i++) {
+            if (x == wall[i].x - 20 && direction == "right" && y == wall[i].y || x == wall[i].x + 20 && direction == "left" && y == wall[i].y || y == wall[i].y - 20 && direction == "down" && x == wall[i].x || y == wall[i].y + 20 && direction == "up" && x == wall[i].x)
+                direction = "stop";
+        }
+        if (x <= 0 && direction == "left")
+            direction = 'right';
+        if (x >= 380 && direction == "right")
+            direction = 'left';
+        if (y <= 0 && direction == "up")
+            direction = 'down';
+        if (y >= 380 && direction == "down")
+            direction = 'up';
+
+        // Setting the player's step directions command
+        if (direction == 'right') {
+            right = x + 20;
+            dir = left;
+            x = right;
+        }
+        if (direction == 'left') {
+            left = x - 20;
+            dir = right;
+            x = left;
+        }
+        if (direction == 'down') {
+            down = y + 20;
+            dir = up;
+            y = down;
+        }
+        if (direction == 'up') {
+            up = y - 20;
+            dir = down;
+            y = up;
+        }
+        enemys()
+
+        //draw for wall
+
+        ctx.fillStyle = 'red';
+        for (i = 0; i < wall.length; i++) {
+            ctx.fillRect(wall[i].x, wall[i].y, 20, 20);
+        }
+
+        //draw for ham
+        for (i = 0; i < map.length; i++) {
+            if (map[i] == 0)
+                ctx.drawImage(ham_image, (i % 20 * 20), ((Math.floor(i / 20)) * 20), 20, 20);
+        }
+        //drwa enemy
+        for (i = 0; i < enemy.length; i++) {
+            ctx.drawImage(enemy_image, enemy[i].x, enemy[i].y, 20, 20);
+        }
+        //draw apples
+        for (i = 0; i < apples.length; i++)
+            ctx.drawImage(apple_image, apples[i].x, apples[i].y, 20, 20);
+
+        //draw for player
+        ctx.drawImage(player_image, x, y, 20, 20);
+
+        //draw for bombs
+        for (i = 0; i < bombs.length; i++) {
+            ctx.drawImage(bomb_image, bombs[i].x, bombs[i].y, 20, 20);
+            if (x == bombs[i].x && y == bombs[i].y) {
+
+                if (direction == "right") {
+                    direction = "stop";
+                    x -= 20;
+                }
+                if (direction == "left") {
+                    direction = "stop";
+                    x += 20;
+                }
+                if (direction == "down") {
+                    direction = "stop";
+                    y -= 20;
+                }
+                if (direction == "up") {
+                    direction = "stop";
+                    y += 20;
+                }
+                ctx.drawImage(bomb_image_2, bombs[i].x, bombs[i].y, 20, 20);
+
+                life -= 1;
+
+                document.getElementById("life_value").innerHTML = life;
+
+            }
+
+            if (life == 0) {
+                life = "game over"
+                win_life = window.alert(life);
+
+            }
+        }
+        //ham ham
+        for (i = 0; i < map.length; i++) {
+            if (map[i] == 0 && x == (i % 20 * 20) && y == ((Math.floor(i / 20)) * 20))
+                map[i] = 5;
+            
+                if(!0 in map )
+                window.alert("bravo");
+        }
+
+        //crash enemy with player
+        for (i = 0; i < enemy.length; i++) {
+            if (x == enemy[i].x && y == enemy[i].y || x == enemy[i].x - 20 && y == enemy[i].y && direction == "right" && dir_enemy == "left" || x == enemy[i].x + 20 && y == enemy[i].y && direction == "left" && dir_enemy == "right" || y == enemy[i].y - 20 && x == enemy[i].x && direction == "up" && dir_enemy == "down" || y == enemy[i].y + 20 && x == enemy[i].x && direction == "down" && dir_enemy == "up") {
+                life -= 1;
+                ctx.drawImage(bomb_image_2, x, y, 20, 20);
+                dir_enemy = "stop";
+                direction = "stop";
+                x = 200;
+                y = 200;
+            }
+        }
+
+        //score and level
+        for (i = 0; i < apples.length; i++) {
+            if (x == apples[i].x && y == apples[i].y) {
+                score += 1;
+                while (a != 0) {
+                    [random_x, random_y] = random_num(random_x, random_y);
+                    a = 0;
+                    for (j = 0; j < wall.length; j++) {
+                        if (random_x == wall[j].x && random_y == wall[j].y)
+                            a += 1;
+                    }
+                }
+
+                apples[i].x = random_x;
+                apples[i].y = random_y;
+                a = 1;
+
+                //level
+                if (score % 5 == 0) {
+                    level += 1;
+
+                    //new speed
+                    // time -= 12;
+                    window.alert(levelText + level);
+                    // clearInterval(game);
+                    // setInterval(TimeEventHandler, time);
+                    //new brick
+                    [new_brick_x, new_brick_y] = random_num(new_brick_x, new_brick_y);
+                    for (i = 0; i < wall.length; i++) {
+                        while (new_brick_x == wall[i].x && new_brick_y == wall[i].y) {
+                            [new_brick_x, new_brick_y] = random_num(new_brick_x, new_brick_y);
+                        }
+                    }
+                    bombs.push({ x: new_brick_x, y: new_brick_y });
+                }
+            }
+        }
+        // wirght to html
+
+        document.getElementById('level_value').innerHTML = level;
+        document.getElementById('score_value').innerHTML = score;
+        document.getElementById('life_value').innerHTML = life;
+    }
+
+    function directionSelection() {
+
+        if (event.keyCode == 39 && direction != "no r")
+            direction = 'right';
+
+        if (event.keyCode == 37 && direction != "no l")
+            direction = 'left';
+
+        if (event.keyCode == 40 && direction != "no d")
+            direction = 'down';
+
+        if (event.keyCode == 38 && direction != "no u")
+            direction = 'up';
+    }
+
+    canvas = document.getElementById('myCanvas');
+    ctx = canvas.getContext('2d');
+    document.onkeydown = directionSelection;
+    window.alert(levelText + level);
+    setInterval(aa, 3000);
+    var game = setInterval(TimeEventHandler, time);
+
+</script>
